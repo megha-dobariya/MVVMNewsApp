@@ -1,7 +1,6 @@
 package com.androiddevs.mvvmnewsapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AbsListView
 import android.widget.Toast
@@ -18,7 +17,6 @@ import com.androiddevs.mvvmnewsapp.ui.ui.NewsViewModel
 import com.androiddevs.mvvmnewsapp.ui.util.Constants
 import com.androiddevs.mvvmnewsapp.ui.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.androiddevs.mvvmnewsapp.ui.util.Resource
-import kotlinx.android.synthetic.main.fragment_breaking_news.rvBreakingNews
 import kotlinx.android.synthetic.main.fragment_search_news.etSearch
 import kotlinx.android.synthetic.main.fragment_search_news.paginationProgressBar
 import kotlinx.android.synthetic.main.fragment_search_news.rvSearchNews
@@ -31,7 +29,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    val TAG = "SearchNewsFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,9 +65,9 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE +2
                         isLastPage = viewModel.searchNewsPage == totalPages
-                        if (isLastPage){
-                            rvBreakingNews.setPadding( 0,0,0,0)
-                        }
+//                        if (isLastPage){
+//                            rvBreakingNews.setPadding( 0,0,0,0)
+//                        }
                     }
                 }
 
